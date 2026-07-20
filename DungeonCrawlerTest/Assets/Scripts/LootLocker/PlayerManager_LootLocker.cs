@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using LootLocker.Requests;
+
 public class PlayerManager_LootLocker : MonoBehaviour
 {
     public static PlayerManager_LootLocker Instance { get; private set; }
@@ -37,19 +37,19 @@ public class PlayerManager_LootLocker : MonoBehaviour
     public void SetPlayerName(string name)
     {
         //string currentUsername = PlayerPrefs.GetString("InputFieldValue");
-        LootLockerSDKManager.SetPlayerName(name, (response) =>
-        {
-            if (response.success)
-            {
-                Debug.Log("Sucessfully Set Player Name");
-                //FindObjectOfType<ScreenLoader>().LoadScene("SampleScene");
-            }
-            else
-            {
-                Debug.Log("Failed to change name" + response.errorData);
-                //FindObjectOfType<ScreenLoader>().LoadScene("SampleScene");
-            }
-        });
+        //LootLockerSDKManager.SetPlayerName(name, (response) =>
+        //{
+        //    if (response.success)
+        //    {
+        //        Debug.Log("Sucessfully Set Player Name");
+        //        //FindObjectOfType<ScreenLoader>().LoadScene("SampleScene");
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("Failed to change name" + response.errorData);
+        //        //FindObjectOfType<ScreenLoader>().LoadScene("SampleScene");
+        //    }
+        //});
     }
 
    
@@ -64,20 +64,20 @@ public class PlayerManager_LootLocker : MonoBehaviour
     IEnumerator LoginRoutine()
     {
         bool done = false;
-        LootLockerSDKManager.StartGuestSession((response) =>
-        {
-            if (response.success)
-            {
-                Debug.Log("Player has logged in");
-                playerID = response.player_id.ToString();
-                done = true;
-            }
-            else
-            {
-                Debug.Log("Failed Session");
-                done = true;
-            }
-        });
+        //LootLockerSDKManager.StartGuestSession((response) =>
+        //{
+        //    if (response.success)
+        //    {
+        //        Debug.Log("Player has logged in");
+        //        playerID = response.player_id.ToString();
+        //        done = true;
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("Failed Session");
+        //        done = true;
+        //    }
+        //});
 
         yield return new WaitWhile(() => done == false);
 
@@ -86,19 +86,19 @@ public class PlayerManager_LootLocker : MonoBehaviour
     {
         bool done = false;
         string currentUsername = PlayerPrefs.GetString("InputFieldValue");
-        LootLockerSDKManager.SetPlayerName(currentUsername, (response) =>
-        {
-            if (response.success)
-            {
-                Debug.Log("Sucessfully Set Player Name");
+        //LootLockerSDKManager.SetPlayerName(currentUsername, (response) =>
+        //{
+        //    if (response.success)
+        //    {
+        //        Debug.Log("Sucessfully Set Player Name");
 
-            }
-            else
-            {
-                Debug.Log("Failed to change name" + response.errorData);
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("Failed to change name" + response.errorData);
 
-            }
-        });
+        //    }
+        //});
         yield return new WaitWhile(() => done == false);
     }
 

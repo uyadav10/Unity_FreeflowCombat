@@ -169,13 +169,13 @@ public class EnemyBase : MonoBehaviour
         switch (enemyState)
         {
             case EnemyState.idle:
-                rb.velocity = Vector3.zero;
+                rb.linearVelocity = Vector3.zero;
                 agent.enabled = true;
                 animator.SetBool("move", false);
                 break;
 
             case EnemyState.move:
-                rb.velocity = Vector3.zero;
+                rb.linearVelocity = Vector3.zero;
                 agent.enabled = true;
                 agent.SetDestination(player.position);
                 animator.SetBool("move", true);
